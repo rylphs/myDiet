@@ -1,0 +1,3 @@
+#!/bin/bash
+cmd="$HOME/apps/node/bin/cordova $@";
+JAVA_HOME=$HOME/apps/jdk/jdk1.8.0_121 PATH=$JAVA_HOME/bin:${PATH} ANDROID_SDK_ROOT=$HOME/Android/Sdk PATH=$PATH:$ANDROID_SDK_ROOT/emulator PATH=$PATH:$ANDROID_SDK_ROOT/tools PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools /bin/bash -c "$cmd"

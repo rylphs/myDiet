@@ -1,8 +1,11 @@
+var moment:any;
+
 class Refeicao {
     _nome:string;
     _horaInicio:any;
     _horaFim:any;
     _icon:any;
+    _horario:Date = moment();
 
     constructor(nome:any, horaInicio:any, horaFim:any, icon:any) {
         this._nome = nome;
@@ -39,9 +42,17 @@ class Refeicao {
         this._icon = ico;
     }
 
+    set horario(horario:Date){
+        this._horario = horario;
+    }
+
+    get horario(){
+        return this._horario;
+    }
+
     static forNow() {
         var now = new Date();
-        let refeicoes = getTodasRefeicoes();
+        let refeicoes = new RefeicoesService().getTodasRefeicoes();
         for (let i in refeicoes) {
             var refeicao = refeicoes[i];
             if (now.getHours() > refeicao.horaInicio &&
@@ -49,15 +60,4 @@ class Refeicao {
         }
         return null;
     }
-}
-
-function getTodasRefeicoes() {
-    return [
-        new Refeicao("Café", 4, 9, "ion-coffee"),
-        new Refeicao("Colação", 9, 11, "ion-ios-nutrition"),
-        new Refeicao("Almoço", 11, 14, "ion-android-restaurant"),
-        new Refeicao("Lanche", 14, 17, "ion-pizza"),
-        new Refeicao("Janta", 17, 21, "ion-wineglass"),
-        new Refeicao("Ceia", 21, 4, "ion-ios-cloudy-night"),
-    ];
 }

@@ -1,0 +1,11 @@
+{
+    "search.exclude": {
+        "www/**": true
+    },
+    "files.exclude": {
+        "www": true,
+        "node_modules" :true,
+        "platforms": true,
+        "plugins": true
+    }
+}

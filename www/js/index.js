@@ -13,11 +13,18 @@ function carregarTemplate(template, dst, data) {
 }
 
 function loadTemplates() {
+    var data = {
+        refeicaoSelecionada: Refeicao.forNow(),
+        refeicoes: getTodasRefeicoes()
+    }
     for (var i in tabTemplates) {
         var template = tabTemplates[i];
 
         $.get("templates/" + template.file, function(value) {
-            $(template.tag).html(value);
+            carregarTemplate(value, template.tag, data);
+            return;
+            var html = $.render.person(data);
+            $(template.tag).html(html);
         });
     }
 }

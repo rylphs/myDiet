@@ -1,0 +1,45 @@
+<div class="options-menu row-between">
+    <div class="col-20" onclick="openPopover('popover-selecionar-refeicoes')">
+        <button class="icon-text deep-purple">
+            <div><i id="iconRefeicaoSelecionada" class="icon"></i>
+            <span id="refeicaoSelecionada"></span></div>
+        </button>
+    </div>
+
+    <div class="col-20">
+        <button class="icon-text deep-purple right">
+            <i class="icon ion-calendar"></i>
+            <span id="data">{{:refeicaoSelecionada.diaDaSemana}}</span>
+        </button>
+    </div>
+</div>
+
+<button class="float-bottom-right indigo circle icon ion-plus"></button>
+<div class="popover" id="popover-selecionar-refeicoes">
+    <div class="list">
+        {{for refeicoes}}
+        <div class="item item-refeicao" data-index="{{:id}}" onclick="selecionarRefeicao()">
+            <i class="icon {{:icon}}"></i>
+            <div style="display: inline-block; line-height: 32px">{{:nome}}</div>
+        </div>
+        {{/for}}
+    </div>
+</div>
+
+<script type=" text/javascript ">
+    var service = new RegistroService()
+
+    function selecionarRefeicao() {
+        var id = $(event.currentTarget).data("index");
+        setRefeicaoSelecionada(id);
+    }
+
+    function setRefeicaoSelecionada(id) {
+        var refeicao = service.getRefeicaoBase(Number(id));
+        $("#iconRefeicaoSelecionada").removeClass();
+        $("#iconRefeicaoSelecionada").addClass("icon " + refeicao.icon);
+        $("#refeicaoSelecionada ").html(refeicao.nome);
+    }
+
+    setRefeicaoSelecionada(service.refeicaoDeAgora.id);
+</script>

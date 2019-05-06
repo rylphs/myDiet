@@ -27,4 +27,4 @@ function loadTemplates() {
             carregarTemplate(value, template.tag, data);
         });
     }
-}
+}   

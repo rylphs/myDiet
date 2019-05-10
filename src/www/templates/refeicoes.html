@@ -1,0 +1,32 @@
+<button class="float-bottom-right indigo circle icon ion-plus"></button>
+
+<div class="list">
+    {{for refeicoes}}
+    <div class="item shadow border-grey-400 row" data-index="{{:id}}" onclick="">
+        <span class="col">
+            <i class="icon {{:icon}}"></i>
+            <div style="display: inline-block; line-height: 32px">{{:nome}}</div>
+        </span>
+        <div class="col" style="display: inline-block; line-height: 32px">{{:diaDaSemana}}</div>
+        <span class="col"><input type="text" size="5" class="hora" /></span>
+        <span class="col"><input class="hora" size="5"/></span>
+    </div>
+    {{/for}}
+
+</div>
+<div class="item range">
+    <div class="left">
+        <i class="icon ion-ios-lightbulb-outline"></i>
+    </div>
+    <input onchange="console.log(event)" type="range" min="0" max="100" value="32">
+    <div class="right">
+        <i class="icon ion-ios-lightbulb"></i>
+    </div>
+</div>
+
+<script>
+    $.when($.ready).then(function() {
+        console.log($(".hora"));
+        $(".hora").timepicki();
+    });
+</script>

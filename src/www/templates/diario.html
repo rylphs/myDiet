@@ -1,8 +1,8 @@
 <div class="options-menu row-between">
     <div class="col-20" onclick="openPopover('popover-selecionar-refeicoes')">
         <button class="icon-text deep-purple">
-            <div><i id="iconRefeicaoSelecionada" class="icon"></i>
-            <span id="refeicaoSelecionada"></span></div>
+            <div><i id="iconRefeicaoSelecionada" class="icon {{:refeicaoSelecionada.icon}}"></i>
+            <span id="refeicaoSelecionada">{{:refeicaoSelecionada.nome}}</span></div>
         </button>
     </div>
 
@@ -18,7 +18,7 @@
 <div class="popover" id="popover-selecionar-refeicoes">
     <div class="list">
         {{for refeicoes}}
-        <div class="item item-refeicao" data-index="{{:id}}" onclick="selecionarRefeicao()">
+        <div class="item item-refeicao" data-index="{{:id}}" onclick="selecionarRefeicao(event)">
             <i class="icon {{:icon}}"></i>
             <div style="display: inline-block; line-height: 32px">{{:nome}}</div>
         </div>
@@ -27,19 +27,4 @@
 </div>
 
 <script type=" text/javascript ">
-    var service = new RegistroService()
-
-    function selecionarRefeicao() {
-        var id = $(event.currentTarget).data("index");
-        setRefeicaoSelecionada(id);
-    }
-
-    function setRefeicaoSelecionada(id) {
-        var refeicao = service.getRefeicaoBase(Number(id));
-        $("#iconRefeicaoSelecionada").removeClass();
-        $("#iconRefeicaoSelecionada").addClass("icon " + refeicao.icon);
-        $("#refeicaoSelecionada ").html(refeicao.nome);
-    }
-
-    setRefeicaoSelecionada(service.refeicaoDeAgora.id);
 </script>

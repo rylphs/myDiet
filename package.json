@@ -17,7 +17,7 @@
         "build": "rm -rf www && cp -avr src/www ./www && tsc -p .",
         "buildbrowser": "rm -rf www && cp -avr src/www ./www && tsc -p . && cordova prepare browser",
         "rebuild": "cordova prepare browser",
-        "browser": "npm build && cordova run browser",
+        "browser": "npm run build && cordova run browser",
         "watch": "npm-watch"
     },
     "keywords": [
